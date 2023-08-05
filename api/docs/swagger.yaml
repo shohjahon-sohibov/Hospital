@@ -1,0 +1,137 @@
+definitions:
+  http.Response:
+    properties:
+      data: {}
+      description:
+        type: string
+      status:
+        type: string
+    type: object
+  models.Login:
+    properties:
+      login:
+        type: string
+      password:
+        type: string
+      token:
+        type: string
+    type: object
+  models.SignUp:
+    properties:
+      age:
+        type: integer
+      first_name:
+        type: string
+      gmail:
+        type: string
+      last_name:
+        type: string
+      password:
+        type: string
+      phone_number:
+        type: string
+      username:
+        type: string
+    type: object
+  models.Token:
+    properties:
+      token:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: This is a api gateway
+paths:
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Login
+      operationId: login_client
+      parameters:
+      - description: Login
+        in: body
+        name: event
+        required: true
+        schema:
+          $ref: '#/definitions/models.Login'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Login
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Login'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: Login
+      tags:
+      - Auth
+  /signup:
+    post:
+      consumes:
+      - application/json
+      description: Sign Up
+      operationId: sign_up_client
+      parameters:
+      - description: SignUp
+        in: body
+        name: event
+        required: true
+        schema:
+          $ref: '#/definitions/models.SignUp'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Token
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Token'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: Sign Up
+      tags:
+      - Auth
+swagger: "2.0"
