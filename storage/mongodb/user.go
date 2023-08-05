@@ -191,15 +191,14 @@ func (u userRepo) GetSingleUser(ctx context.Context, id string) (res *models.Use
 			fmt.Println("Error decoding user:", err)
 		}
 	} else {
-		// Handle case when no user is found
 		return nil, fmt.Errorf("user not found")
 	}
 	filterClient := bson.M{}
 	filterClient["doctor_id"] = id
-	filterClient["created_at"] = bson.M{
-		"$gte": time.Now().Add(-24 * time.Hour),
-		"$lte": time.Now(),
-	}
+	// filterClient["created_at"] = bson.M{
+	// 	"$gte": time.Now().Add(-24 * time.Hour),
+	// 	"$lte": time.Now(),
+	// }
 	count, err := u.queueCollection.CountDocuments(ctx, filterClient)
 	if err != nil {
 		return nil, fmt.Errorf("Error insert hospital, err: %v", err)

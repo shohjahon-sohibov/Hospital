@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	// "fmt"
 	"log"
 
@@ -29,7 +30,8 @@ func main() {
 		loggerLevel = logger.LevelInfo
 	}
 
-	mongoString := "mongodb://localhost/27017"
+	// mongoString := "mongodb+srv://shohjahon:9suQpK8sFAQPOMLF@cluster0.q1xijde.mongodb.net/"
+	mongoString := fmt.Sprintf("mongodb+srv://%s:%s@%s", config.Load().MongoUser, config.Load().MongoPassword, config.Load().MongoHost)
 
 	log.Println("MAIN TEST PRINT " + mongoString)
 	mongoConn, err := mongo.Connect(context.Background(), options.Client().ApplyURI(mongoString))

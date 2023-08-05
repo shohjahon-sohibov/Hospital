@@ -65,13 +65,13 @@ func Load() Config {
 	config.Environment = cast.ToString(getOrReturnDefaultValue("ENVIRONMENT", DebugMode))
 	config.Version = cast.ToString(getOrReturnDefaultValue("VERSION", "1.0"))
 
-	config.HTTPPort = cast.ToString(getOrReturnDefaultValue("HTTP_PORT", ":3002"))
+	config.HTTPPort = cast.ToString(getOrReturnDefaultValue("HTTP_PORT", ":3000"))
 	config.HTTPScheme = cast.ToString(getOrReturnDefaultValue("HTTP_SCHEME", "http"))
 
-	config.MongoHost = cast.ToString(getOrReturnDefaultValue("MONGO_HOST", "localhost")) 
+	config.MongoHost = cast.ToString(getOrReturnDefaultValue("MONGO_HOST", "cluster0.q1xijde.mongodb.net")) 
 	config.MongoPort = cast.ToInt(getOrReturnDefaultValue("MONGO_PORT", 27017)) 
 	config.MongoUser = cast.ToString(getOrReturnDefaultValue("MONGO_USER", "shohjahon"))
-	config.MongoPassword = cast.ToString(getOrReturnDefaultValue("MONGO_PASSWORD", "1"))
+	config.MongoPassword = cast.ToString(getOrReturnDefaultValue("MONGO_PASSWORD", "9suQpK8sFAQPOMLF"))
 	config.MongoDatabase = cast.ToString(getOrReturnDefaultValue("MONGO_DATABASE", "clinic_queue"))
 
 
